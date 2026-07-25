@@ -276,6 +276,7 @@
     <a href="#" id="mobile-logout-btn"><i class="ti ti-logout" style="font-size: 24px;"></i> Logout</a>
   </div>
 
+  <script src="metered-config.js"></script>
   <script type="module">
     import { auth, db, onAuthStateChanged, signOut } from './firebase-config.js';
     import {
@@ -614,7 +615,7 @@
     async function fetchTurnCredentials() {
       try {
         const res = await fetch(
-          'https://mirror-ai.metered.live/api/v1/turn/credentials?apiKey=5e02dca5dbbd0a2eb62539012f6bcaa85249'
+          `https://mirror-ai.metered.live/api/v1/turn/credentials?apiKey=${window.METERED_API_KEY}`
         );
         if (!res.ok) throw new Error(`Metered API Error: ${res.status}`);
         const iceServers = await res.json();
